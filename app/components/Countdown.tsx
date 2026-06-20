@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import Reveal from "./Reveal";
 
-/* The gate opens on June 24, 2026 at 6:00 PM. */
-const TARGET = new Date("2026-06-24T18:00:00").getTime();
+/* The gate opens on June 24, 2026 at 8:00 AM. */
+const TARGET = new Date("2026-06-24T08:00:00").getTime();
 
 type Parts = { days: number; hours: number; minutes: number; seconds: number };
 
