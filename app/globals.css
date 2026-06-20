@@ -1,26 +1,174 @@
 @import "tailwindcss";
 
+/*
+  VORAKAI 26 — THE LOST EPOCH
+  Palette: excavated stone, jungle canopy at dusk, and inscription gold.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --abyss: #070b08; /* canopy-black, faint green cast */
+  --moss-deep: #11201a; /* deep jungle shadow */
+  --stone: #2a2620; /* weathered carved stone */
+  --gold: #c8a24a; /* primary inscription gold */
+  --gold-bright: #ecd49a; /* lit gold-leaf highlight */
+  --gold-dim: #6f5a30; /* tarnished gold for hairlines */
+  --parchment: #d8c9a6; /* aged ivory body text */
+  --parchment-dim: #9a8f76; /* muted captions */
+
+  --background: var(--abyss);
+  --foreground: var(--parchment);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-abyss: var(--abyss);
+  --color-moss-deep: var(--moss-deep);
+  --color-stone: var(--stone);
+  --color-gold: var(--gold);
+  --color-gold-bright: var(--gold-bright);
+  --color-gold-dim: var(--gold-dim);
+  --color-parchment: var(--parchment);
+  --color-parchment-dim: var(--parchment-dim);
+
+  --font-display: var(--font-cinzel);
+  --font-decorative: var(--font-cinzel-decorative);
+  --font-body: var(--font-garamond);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--abyss);
+  color: var(--parchment);
+  font-family: var(--font-body), Georgia, serif;
+  /* Layered atmosphere: a buried glow beneath dense canopy shadow. */
+  background-image:
+    radial-gradient(
+      ellipse 90% 55% at 50% 38%,
+      rgba(40, 58, 40, 0.55) 0%,
+      rgba(12, 20, 14, 0.4) 45%,
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 120% 80% at 50% 50%,
+      transparent 55%,
+      rgba(3, 5, 4, 0.85) 100%
+    );
+  overflow-x: hidden;
+}
+
+/* ---- Gold-leaf inscription text (the VORAKAI / heading treatment) ---- */
+.foil {
+  background: linear-gradient(
+    176deg,
+    #8a6f33 0%,
+    #d8b465 18%,
+    #f6e6b4 38%,
+    #c8a24a 52%,
+    #f1dca0 66%,
+    #9c7d3a 86%,
+    #d8b465 100%
+  );
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Eyebrow / small-caps label */
+.eyebrow {
+  font-family: var(--font-display), serif;
+  text-transform: uppercase;
+  letter-spacing: 0.42em;
+  color: var(--gold);
+}
+
+.section-shell {
+  position: relative;
+  z-index: 1;
+}
+
+/* Faint engraved divider line */
+.hairline {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--gold-dim) 30%,
+    var(--gold) 50%,
+    var(--gold-dim) 70%,
+    transparent
+  );
+}
+
+/* ---- Motion ---- */
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin-reverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes scroll-cue {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 60s linear infinite;
+}
+.animate-spin-reverse {
+  animation: spin-reverse 90s linear infinite;
+}
+.animate-pulse-glow {
+  animation: pulse-glow 5s ease-in-out infinite;
+}
+.animate-scroll-cue {
+  animation: scroll-cue 2s ease-in-out infinite;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--abyss);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-spin-slow,
+  .animate-spin-reverse,
+  .animate-pulse-glow,
+  .animate-scroll-cue {
+    animation: none !important;
+  }
 }
