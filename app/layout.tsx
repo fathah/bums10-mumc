@@ -20,7 +20,16 @@ const garamond = EB_Garamond({
   style: ["normal", "italic"],
 });
 
+const SITE_URL = "https://fathah.github.io/bums10-mumc/";
+const THUMB = {
+  url: `${SITE_URL}thumb.jpg`,
+  width: 919,
+  height: 422,
+  alt: "VORAKAI 26 — The Lost Epoch · Fresher's Party",
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "VORAKAI 26 — The Lost Epoch | Fresher's Party",
   description:
     "You are invited. VORAKAI 26: The Lost Epoch. Fresher's Party — June 24, 2026 at The 4th Dimension. An expedition into the unknown awaits the new arrivals.",
@@ -28,7 +37,17 @@ export const metadata: Metadata = {
     title: "VORAKAI 26 — The Lost Epoch",
     description:
       "Fresher's Party · June 24, 2026 · The 4th Dimension. Cross the threshold.",
+    url: SITE_URL,
+    siteName: "VORAKAI 26",
     type: "website",
+    images: [THUMB],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "VORAKAI 26 — The Lost Epoch",
+    description:
+      "Fresher's Party · June 24, 2026 · The 4th Dimension. Cross the threshold.",
+    images: [THUMB.url],
   },
 };
 
