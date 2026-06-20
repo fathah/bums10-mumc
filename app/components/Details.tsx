@@ -14,7 +14,7 @@ const details: Detail[] = [
     icon: CalendarDays,
     label: "When",
     value: "June 24, 2026",
-    sub: "Doors at 6:00 PM",
+    sub: "Doors at 8:00 AM",
   },
   {
     icon: MapPin,
@@ -52,7 +52,9 @@ export default function Details() {
                 <h3 className="mt-4 font-[family-name:var(--font-display)] text-2xl font-semibold text-parchment sm:text-[1.65rem]">
                   {value}
                 </h3>
-                <p className="mt-3 text-base italic text-parchment-dim">{sub}</p>
+                <p className="mt-3 text-base italic text-parchment-dim">
+                  {sub}
+                </p>
               </article>
             </Reveal>
           ))}
