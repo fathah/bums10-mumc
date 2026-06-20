@@ -25,7 +25,9 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20 [mask-image:linear-gradient(to_bottom,transparent,#000_18%,#000_60%,transparent)] [-webkit-mask-image:linear-gradient(to_bottom,transparent,#000_18%,#000_60%,transparent)]"
-          style={{ backgroundImage: "url('/bg.png')" }}
+          style={{
+            backgroundImage: `url('${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/bg.webp')`,
+          }}
         />
         <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-b from-transparent to-abyss" />
       </div>
